@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+       stage('Git Checkout') {
+           steps {
+               git branch: 'main', url: 'https://github.com/matanelg/nandi'
+           }
+       }
+        stage('01. docker') {
+            steps {
+                sh '''
+                    #!/bin/bash
+                    cd ./nandi-test
+                    docker build -t nandi-test .
+                    docker run -d -p 8081:80 nandi-test
+                 '''
+            }
+        }
+    }
+}
