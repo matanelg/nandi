@@ -14,6 +14,13 @@ accessanalyzer
 
 </details>
 
+- <details><summary>apply-archive-rule</summary>
+
+  * --analyzer-arn
+  * --client-token
+
+</details>
+
 </details>
 
 
@@ -31,4 +38,9 @@ accessanalyzer
 </details>
 
 </details>
+
+
+
+
+
 
