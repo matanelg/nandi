@@ -7,7 +7,7 @@
 accessanalyzer
 </summary>
 
-- <details><summary>apply-archive-rule</summary>
+- <details><summary>apply-archive-rule</summary><br/>
   * --analyzer-arn
   * --client-token
 
