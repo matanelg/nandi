@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    environment {
+        id="'{"uid" : "61bc33aebf320157f85b84ac"}'"
+    }
+    stages {
+       stage('Git Checkout') {
+           steps {
+               // change
+               git branch: 'main', url: 'https://github.com/matanelg/nandi'
+           }
+       }
+        stage('01. mongo') {
+            steps {
+                sh '''
+                    #!/bin/bash
+                    mongoexport --db=okiano-prod --collection='adwords.pre_input.keywords'  --query=${id} --out=adwords.pre_input.keywords.json
+                    mongoexport --db=okiano-prod --collection='items.external'  --query=${id} --out=items.external.json
+                    mongoexport --db=okiano-prod --collection='categories.adjustments'  --query=${id} --out=categories.adjustments.json
+                    mongoexport --db=okiano-prod --collection='common.translate' --out=common.translate.json
+                    mongoexport --db=okiano-prod --collection='common.ref.widgets' --out=common.ref.widgets.json
+                 '''
+            }
+        }
+    }
+}
